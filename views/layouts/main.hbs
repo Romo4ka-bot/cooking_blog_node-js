@@ -1,0 +1,14 @@
+{{> header }}
+<body>
+{{#if isHeader}}
+{{else}}
+    {{> navigation }}
+{{/if}}
+
+<div class="container">
+    {{{ body }}}
+</div>
+
+{{> footer}}
+</body>
+</html>

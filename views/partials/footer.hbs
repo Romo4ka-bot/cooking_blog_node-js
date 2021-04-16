@@ -1,0 +1,36 @@
+<script>
+    const closeBlock = document.querySelector('.close__block');
+    const modal = document.querySelector('.donation__modal');
+    const donationLink = document.querySelector('#donation-link');
+    const page = document.querySelector('#page');
+
+    const closeClick = () => {
+        modal.classList.remove('active-modal');
+        page.classList.remove('help__overflow');
+    };
+    const openModal = () => {
+        modal.classList.add('active-modal');
+        page.classList.add('help__overflow');
+    };
+
+    closeBlock.addEventListener('click', closeClick);
+    donationLink.addEventListener('click', openModal);
+</script>
+<script>
+    const toDate = date => {
+        return new Intl.DateTimeFormat('ru-RU', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        }).format(new Date(date))
+
+    };
+    document.querySelectorAll('.date').forEach(node => {
+        node.textContent = toDate(node.textContent)
+    });
+</script>
+
+<script src="/javascripts/app.js"></script>

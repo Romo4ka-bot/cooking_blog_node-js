@@ -1,0 +1,49 @@
+<header class="header">
+    <div class="header__inner">
+        <div class="header__left">
+            <div class="header__logo">ПоЩам</div>
+            <a href="/" class="header__link">Главная</a>
+            <a href="/about" class="header__link">Про нас</a>
+            <a href="#" class="header__link" id="donation-link">Поддержать проект</a>
+        </div>
+        <div class="header__right">
+            {{#if isAuth}}
+                <a href="/logout" class="header__link header__input">Выйти</a>
+            {{else}}
+                <a href="/login" class="header__link header__input">Вход</a>
+            {{/if}}
+        </div>
+    </div>
+    <section class="donation__modal">
+        <div class="donation__modal-inner">
+            <a href="#" class="close__block">
+                <svg class="close-symbol">
+                    <use xlink:href="#close"></use>
+                </svg>
+            </a>
+
+            <h2 class="donation__modal-title">
+                Поддержать нас
+            </h2>
+            <form class="donation__modal-form" method="post" action="/donation">
+
+                <input type="hidden" name="_csrf" value="{{ csrf }}">
+
+                {{#if isAuth}}
+                {{else}}
+                <div class="form__group">
+                    <label for="email" class="form__label">Почта</label>
+                    <input type="email" name="email" class="form__field" id="email" placeholder="Email">
+                </div>
+                {{/if}}
+
+                <div class="form__group">
+                    <label for="price" class="form__label">Цена</label>
+                    <input type="number" name="price" class="form__field form__price" id="price" placeholder="Price">
+                </div>
+
+                <button type="submit" class="donation__btn">Задонатить</button>
+            </form>
+        </div>
+    </section>
+</header>
